@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avery Gleaton | Automation Engineer</title>
+<meta name="description" content="Automation engineer specializing in utility monitoring systems, AI-powered workflows, and intelligent infrastructure for property management.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+:root {
+  --bg-deep: #06060a;
+  --bg-base: #0a0a0f;
+  --bg-raised: #0f0f16;
+  --bg-surface: #14141e;
+  --bg-hover: #1a1a28;
+  --cyan: #00d4ff;
+  --cyan-dim: #00d4ff33;
+  --cyan-glow: #00d4ff18;
+  --amber: #ff8c00;
+  --amber-dim: #ff8c0033;
+  --green: #00ff88;
+  --red: #ff4444;
+  --text-primary: #e8e8ed;
+  --text-secondary: #8888a0;
+  --text-tertiary: #555568;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  --font-body: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+  --border: #1e1e2e;
+  --border-glow: #00d4ff22;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--cyan-dim) var(--bg-deep);
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--cyan);
+  color: var(--bg-deep);
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--amber); }
+
+/* ============================================
+   DOT GRID BACKGROUND
+   ============================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: radial-gradient(circle, var(--text-tertiary) 0.5px, transparent 0.5px);
+  background-size: 32px 32px;
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   SCAN LINE OVERLAY
+   ============================================ */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 212, 255, 0.008) 2px,
+    rgba(0, 212, 255, 0.008) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(6, 6, 10, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: all 0.3s;
+}
+
+.nav-logo {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--cyan);
+  letter-spacing: 0.05em;
+}
+.nav-logo span { color: var(--text-tertiary); }
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  position: relative;
+  padding-bottom: 2px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--cyan);
+  transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--cyan); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+}
+.nav-hamburger span {
+  width: 22px;
+  height: 1.5px;
+  background: var(--text-secondary);
+  transition: all 0.3s;
+}
+
+/* ============================================
+   SECTIONS COMMON
+   ============================================ */
+section {
+  position: relative;
+  z-index: 1;
+  padding: 8rem 2rem;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+.section-title {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ============================================
+   HERO
+   ============================================ */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-top: 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.hero-grid-bg::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 10%;
+  right: -10%;
+  background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+.hero-grid-bg::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  bottom: 10%;
+  left: -5%;
+  background: radial-gradient(circle, var(--amber-dim) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: pulse-glow 8s ease-in-out 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-prefix {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.1em;
+  margin-bottom: 1.5rem;
+}
+.hero-prefix .blink {
+  color: var(--cyan);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.hero-name {
+  font-family: var(--font-mono);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 700;
+  line-height: 0.95;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--text-primary) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-title {
+  font-family: var(--font-mono);
+  font-size: clamp(0.9rem, 2vw, 1.2rem);
+  font-weight: 400;
+  color: var(--amber);
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.hero-tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 300;
+  color: var(--text-secondary);
+  max-width: 560px;
+  line-height: 1.5;
+  margin-bottom: 3rem;
+}
+
+.hero-tagline .typed-text {
+  color: var(--cyan);
+  border-right: 2px solid var(--cyan);
+  padding-right: 4px;
+  animation: cursor-blink 0.8s step-end infinite;
+}
+
+@keyframes cursor-blink {
+  50% { border-color: transparent; }
+}
+
+/* Terminal Preview */
+.hero-terminal {
+  max-width: 520px;
+  background: var(--bg-base);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0, 212, 255, 0.05);
+}
+
+.terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 14px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.terminal-dot.red { background: var(--red); opacity: 0.7; }
+.terminal-dot.amber { background: var(--amber); opacity: 0.7; }
+.terminal-dot.green { background: var(--green); opacity: 0.7; }
+
+.terminal-title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  margin-left: 8px;
+}
+
+.terminal-body {
+  padding: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+}
+
+.terminal-body .prompt { color: var(--cyan); }
+.terminal-body .cmd { color: var(--text-primary); }
+.terminal-body .output { color: var(--green); }
+.terminal-body .comment { color: var(--text-tertiary); }
+.terminal-body .flag { color: var(--amber); }
+
+/* ============================================
+   CAPABILITIES
+   ============================================ */
+#capabilities {
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.cap-card {
+  padding: 2rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+}
+.cap-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--cyan-dim), transparent, var(--amber-dim));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.35s;
+}
+.cap-card:hover::before { opacity: 1; }
+.cap-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 212, 255, 0.06);
+}
+
+.cap-icon {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--cyan);
+}
+
+.cap-title {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: var(--text-primary);
+}
+
+.cap-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+/* ============================================
+   PROJECTS
+   ============================================ */
+#projects {
+  background: var(--bg-deep);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.project-card {
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-card:hover {
+  border-color: var(--cyan-dim);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3), 0 0 20px var(--cyan-glow);
+}
+
+.project-visual {
+  height: 180px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* CSS Architecture Diagram for 3-Layer project */
+.visual-architecture {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 24px;
+}
+.arch-node {
+  padding: 8px 12px;
+  border: 1px solid var(--cyan-dim);
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--cyan);
+  background: var(--bg-base);
+  text-align: center;
+  white-space: nowrap;
+}
+.arch-arrow {
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  animation: arrow-pulse 2s ease-in-out infinite;
+}
+@keyframes arrow-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; color: var(--cyan); }
+}
+
+/* CSS Flow diagram for ticket system */
+.visual-flow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 20px;
+}
+.flow-node {
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  text-align: center;
+  white-space: nowrap;
+}
+.flow-input { background: var(--amber-dim); color: var(--amber); border: 1px solid var(--amber-dim); }
+.flow-process { background: var(--cyan-glow); color: var(--cyan); border: 1px solid var(--cyan-dim); }
+.flow-output { background: rgba(0, 255, 136, 0.1); color: var(--green); border: 1px solid rgba(0, 255, 136, 0.2); }
+.flow-arrow {
+  color: var(--text-tertiary);
+  font-size: 0.65rem;
+  animation: arrow-pulse 2s ease-in-out infinite;
+}
+
+/* CSS Before/After for cleanup project */
+.visual-compare {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 24px;
+}
+.compare-block {
+  text-align: center;
+  font-family: var(--font-mono);
+}
+.compare-number {
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.compare-number.before { color: var(--red); }
+.compare-number.after { color: var(--green); }
+.compare-label {
+  font-size: 0.55rem;
+  color: var(--text-tertiary);
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.compare-arrow {
+  font-size: 1.2rem;
+  color: var(--cyan);
+  animation: arrow-pulse 2s ease-in-out infinite;
+}
+
+/* Generic visual placeholder */
+.visual-generic {
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  color: var(--text-tertiary);
+  opacity: 0.3;
+}
+
+/* Data nodes animation */
+.visual-nodes {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.data-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--cyan);
+  border-radius: 50%;
+  opacity: 0.4;
+  animation: node-float 4s ease-in-out infinite;
+}
+.data-node:nth-child(1) { top: 30%; left: 20%; animation-delay: 0s; }
+.data-node:nth-child(2) { top: 50%; left: 45%; animation-delay: 0.8s; }
+.data-node:nth-child(3) { top: 25%; left: 70%; animation-delay: 1.6s; }
+.data-node:nth-child(4) { top: 65%; left: 30%; animation-delay: 0.4s; }
+.data-node:nth-child(5) { top: 40%; left: 80%; animation-delay: 1.2s; }
+.data-node:nth-child(6) { top: 70%; left: 60%; animation-delay: 2s; }
+
+@keyframes node-float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.3; }
+  50% { transform: translateY(-8px) scale(1.5); opacity: 0.8; }
+}
+
+.project-content {
+  padding: 1.5rem;
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.8rem;
+  gap: 12px;
+}
+
+.project-name {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.project-badge {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  padding: 3px 8px;
+  border-radius: 3px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.badge-live {
+  background: rgba(0, 255, 136, 0.1);
+  color: var(--green);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+}
+.badge-planning {
+  background: var(--amber-dim);
+  color: var(--amber);
+  border: 1px solid var(--amber-dim);
+}
+
+.project-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.2rem;
+}
+
+.project-stats {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-value {
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--cyan);
+  line-height: 1.2;
+}
+
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ============================================
+   PRODUCTS
+   ============================================ */
+#products {
+  background: var(--bg-base);
+  border-top: 1px solid var(--border);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.product-card {
+  padding: 2.5rem 2rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  transition: all 0.35s;
+  position: relative;
+}
+.product-card.featured {
+  border-color: var(--cyan-dim);
+  box-shadow: 0 0 30px var(--cyan-glow);
+}
+.product-card.featured::before {
+  content: 'POPULAR';
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  padding: 4px 16px;
+  background: var(--cyan);
+  color: var(--bg-deep);
+  border-radius: 0 0 4px 4px;
+  font-weight: 600;
+}
+.product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--cyan-dim);
+}
+
+.product-tier {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--text-tertiary);
+  margin-bottom: 0.5rem;
+}
+
+.product-name {
+  font-family: var(--font-mono);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+}
+
+.product-desc {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.product-features {
+  list-style: none;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.product-features li {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.product-features li::before {
+  content: '\2713';
+  color: var(--cyan);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   CONTACT / FOOTER
+   ============================================ */
+#contact {
+  background: var(--bg-deep);
+  border-top: 1px solid var(--border);
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.contact-line {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--text-tertiary);
+  margin-bottom: 2rem;
+}
+
+.contact-email {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  font-weight: 600;
+  color: var(--cyan);
+  display: inline-block;
+  position: relative;
+  padding-bottom: 4px;
+}
+.contact-email::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--cyan-dim);
+  transition: background 0.3s;
+}
+.contact-email:hover::after {
+  background: var(--cyan);
+}
+
+.footer-meta {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-tertiary);
+  letter-spacing: 0.05em;
+}
+
+/* ============================================
+   COUNTER ANIMATION
+   ============================================ */
+.count-up {
+  display: inline-block;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  nav { padding: 0.8rem 1.2rem; }
+  .nav-links { display: none; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(6, 6, 10, 0.95);
+    backdrop-filter: blur(20px);
+    padding: 1.5rem;
+    gap: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-hamburger { display: flex; }
+
+  section { padding: 5rem 1.2rem; }
+
+  .hero-name { margin-bottom: 0.8rem; }
+
+  .hero-terminal { max-width: 100%; }
+
+  .projects-grid { grid-template-columns: 1fr; }
+
+  .cap-grid { grid-template-columns: 1fr 1fr; }
+
+  .products-grid { grid-template-columns: 1fr; }
+
+  .visual-architecture,
+  .visual-flow { flex-wrap: wrap; justify-content: center; gap: 6px; padding: 0 12px; }
+}
+
+@media (max-width: 480px) {
+  .cap-grid { grid-template-columns: 1fr; }
+  .project-stats { flex-direction: column; gap: 0.8rem; }
+  .project-header { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">AG<span>_</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#capabilities">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="container hero-content">
+    <div class="hero-prefix reveal">~/portfolio <span class="blink">$</span></div>
+    <h1 class="hero-name reveal reveal-delay-1">Avery Gleaton</h1>
+    <p class="hero-title reveal reveal-delay-2">Automation Engineer / Systems Architect</p>
+    <p class="hero-tagline reveal reveal-delay-3">
+      <span class="typed-text" id="typedText"></span>
+    </p>
+
+    <div class="hero-terminal reveal reveal-delay-4">
+      <div class="terminal-header">
+        <span class="terminal-dot red"></span>
+        <span class="terminal-dot amber"></span>
+        <span class="terminal-dot green"></span>
+        <span class="terminal-title">avery@systems ~ /portfolio</span>
+      </div>
+      <div class="terminal-body">
+        <div><span class="prompt">$</span> <span class="cmd">claude /work-ticket 40412</span></div>
+        <div><span class="comment"># Pulling ticket details from Zoho...</span></div>
+        <div><span class="comment"># Searching property registry (287 properties)...</span></div>
+        <div><span class="comment"># Cross-referencing meter data via NCM API...</span></div>
+        <div><span class="output">&gt; Draft reply generated. Ready for review.</span></div>
+        <div style="margin-top: 8px">
+          <span class="prompt">$</span> <span class="cmd">claude /ncm-health-report</span> <span class="flag">"First Light Tower"</span>
+        </div>
+        <div><span class="output">&gt; Report saved: 42 units scanned, 3 alerts found.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section id="capabilities">
+  <div class="container">
+    <div class="section-label reveal">001 / What I Build</div>
+    <h2 class="section-title reveal reveal-delay-1">Infrastructure that runs itself</h2>
+    <div class="cap-grid">
+      <div class="cap-card reveal reveal-delay-1">
+        <div class="cap-icon">&gt;_</div>
+        <h3 class="cap-title">Automation Systems</h3>
+        <p class="cap-desc">End-to-end workflow automation that replaces hours of manual work with single-command execution. From ticket triage to property audits.</p>
+      </div>
+      <div class="cap-card reveal reveal-delay-2">
+        <div class="cap-icon">AI</div>
+        <h3 class="cap-title">AI Integration</h3>
+        <p class="cap-desc">Custom MCP servers, autonomous agents, and intelligent pipelines that connect AI to real business systems like Zoho, Supabase, and proprietary APIs.</p>
+      </div>
+      <div class="cap-card reveal reveal-delay-3">
+        <div class="cap-icon">db</div>
+        <h3 class="cap-title">Data Systems</h3>
+        <p class="cap-desc">Knowledge bases with full-text search, property registries spanning hundreds of locations, and structured data pipelines with automatic indexing.</p>
+      </div>
+      <div class="cap-card reveal reveal-delay-4">
+        <div class="cap-icon">{}</div>
+        <h3 class="cap-title">Workflow Design</h3>
+        <p class="cap-desc">Modular workspace architectures that reduce operational overhead by 50-60%. Token-efficient, context-aware, and built to scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-label reveal">002 / Case Studies</div>
+    <h2 class="section-title reveal reveal-delay-1">Systems in production</h2>
+    <div class="projects-grid">
+
+      <!-- Project 1: Ticket Management -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-visual">
+          <div class="visual-flow">
+            <div class="flow-node flow-input">Zoho Ticket</div>
+            <span class="flow-arrow">&rarr;</span>
+            <div class="flow-node flow-process">Flask (15 files)</div>
+            <span class="flow-arrow">&rarr;</span>
+            <div class="flow-node flow-process">AI Analysis</div>
+            <span class="flow-arrow">&rarr;</span>
+            <div class="flow-node flow-output">Response</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Autonomous Ticket Management</h3>
+            <span class="project-badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">15-file Flask application deployed on Google Cloud Run. Handles ticket review, equipment health analysis, usage pattern detection, and tailored customer responses via Zoho Desk API.</p>
+          <div class="project-stats">
+            <div class="stat">
+              <span class="stat-value count-up" data-target="15">0</span>
+              <span class="stat-label">File App</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">GCR</span>
+              <span class="stat-label">Deployed</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Full</span>
+              <span class="stat-label">Autonomy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2: Meterdata Cleanup -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-visual">
+          <div class="visual-compare">
+            <div class="compare-block">
+              <div class="compare-number before count-up" data-target="160">0</div>
+              <div class="compare-label">Tool Calls Before</div>
+            </div>
+            <span class="compare-arrow">&rarr;</span>
+            <div class="compare-block">
+              <div class="compare-number after count-up" data-target="4">0</div>
+              <div class="compare-label">Tool Calls After</div>
+            </div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Meterdata Cleanup v2.0</h3>
+            <span class="project-badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">Automated property deletion system migrated from screenshot-based automation to DOM-based JavaScript execution. Protects critical properties from accidental deletion via safelist.</p>
+          <div class="project-stats">
+            <div class="stat">
+              <span class="stat-value" style="color: var(--green);">97%</span>
+              <span class="stat-label">Fewer Calls</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">85%</span>
+              <span class="stat-label">Token Savings</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3: Three-Layer Architecture -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-visual">
+          <div class="visual-architecture">
+            <div class="arch-node">CLAUDE.md<br><span style="font-size:0.5rem;color:var(--text-tertiary)">Router</span></div>
+            <span class="arch-arrow">&rarr;</span>
+            <div class="arch-node">context.md<br><span style="font-size:0.5rem;color:var(--text-tertiary)">Workspace</span></div>
+            <span class="arch-arrow">&rarr;</span>
+            <div class="arch-node">Skills/MCPs<br><span style="font-size:0.5rem;color:var(--text-tertiary)">Execution</span></div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Three-Layer Workspace Architecture</h3>
+            <span class="project-badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">Central router directs context loading through workspace files to plug-and-play skills and MCP servers. Compatible with Obsidian vault. Designed for complex, adaptive AI agent workflows.</p>
+          <div class="project-stats">
+            <div class="stat">
+              <span class="stat-value">50-60%</span>
+              <span class="stat-label">Token Savings</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value count-up" data-target="6">0</span>
+              <span class="stat-label">Workspaces</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 4: Zoho MCP -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-visual">
+          <div class="visual-flow">
+            <div class="flow-node flow-input">Ticket</div>
+            <span class="flow-arrow">&rarr;</span>
+            <div class="flow-node flow-process">Zoho Books</div>
+            <span class="flow-arrow">&rarr;</span>
+            <div class="flow-node flow-process">Google Drive</div>
+            <span class="flow-arrow">&rarr;</span>
+            <div class="flow-node flow-output">Summary</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Zoho Desk MCP Integration</h3>
+            <span class="project-badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">Custom MCP server enabling Claude to triage tickets, draft replies, and perform autonomous research. Five-step process: pull ticket, search Books, fall back to Drive, cross-reference, output summary.</p>
+          <div class="project-stats">
+            <div class="stat">
+              <span class="stat-value count-up" data-target="5">0</span>
+              <span class="stat-label">Step Research</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Auto</span>
+              <span class="stat-label">Triage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Ticket Streamlining -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-visual">
+          <div class="visual-nodes">
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Ticket Streamlining System</h3>
+            <span class="project-badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">Research template for consistent handling, common issue response library, and workflow tracker. Designed to reduce manual ticket handling time and enforce quality standards.</p>
+          <div class="project-stats">
+            <div class="stat">
+              <span class="stat-value">3</span>
+              <span class="stat-label">Components</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">24hr</span>
+              <span class="stat-label">Target SLA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 6: Supabase KB -->
+      <div class="project-card reveal reveal-delay-3">
+        <div class="project-visual">
+          <div class="visual-nodes">
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+            <div class="data-node"></div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Supabase Knowledge Base</h3>
+            <span class="project-badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">PostgreSQL-backed knowledge base with full-text search, GIN indexes, Row Level Security policies, and auto-updating tsvector triggers. Built for ingesting water metering hardware documentation.</p>
+          <div class="project-stats">
+            <div class="stat">
+              <span class="stat-value">FTS</span>
+              <span class="stat-label">Full-Text Search</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">RLS</span>
+              <span class="stat-label">Row Security</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 7: Feedback Loop -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-visual">
+          <div class="visual-architecture">
+            <div class="arch-node">Agent Draft</div>
+            <span class="arch-arrow">&rarr;</span>
+            <div class="arch-node">Human Edit</div>
+            <span class="arch-arrow">&rarr;</span>
+            <div class="arch-node">Training Data</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Feedback Loop Automation</h3>
+            <span class="project-badge badge-planning">Planning</span>
+          </div>
+          <p class="project-desc">Bookmarklet captures agent draft reply vs. human-modified reply in Zoho Desk. Auto-logs both versions with reasoning, feeding into a living training dataset for continuous improvement.</p>
+          <div class="project-stats">
+            <div class="stat">
+              <span class="stat-value">Live</span>
+              <span class="stat-label">Training Data</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">Auto</span>
+              <span class="stat-label">Capture</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 8: Gumroad -->
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-visual">
+          <div class="visual-architecture">
+            <div class="arch-node" style="border-color: var(--amber-dim); color: var(--amber);">Starter</div>
+            <span class="arch-arrow">&rarr;</span>
+            <div class="arch-node" style="border-color: var(--cyan-dim); color: var(--cyan);">Pro</div>
+            <span class="arch-arrow">&rarr;</span>
+            <div class="arch-node" style="border-color: rgba(0,255,136,0.2); color: var(--green);">Custom</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Tiered Product Suite</h3>
+            <span class="project-badge badge-planning">Planning</span>
+          </div>
+          <p class="project-desc">Starter, Pro, and Custom tiers with interactive onboarding wizard. Recurring revenue roadmap spanning SaaS, retainer, and managed hosting streams.</p>
+          <div class="project-stats">
+            <div class="stat">
+              <span class="stat-value">3</span>
+              <span class="stat-label">Tiers</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value">MRR</span>
+              <span class="stat-label">Revenue Model</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="section-label reveal">003 / Products</div>
+    <h2 class="section-title reveal reveal-delay-1">Ready-to-deploy solutions</h2>
+    <div class="products-grid">
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-tier">Tier 1</div>
+        <h3 class="product-name">Starter</h3>
+        <p class="product-desc">Entry-level automation templates for teams getting started with AI-powered workflows.</p>
+        <ul class="product-features">
+          <li>Pre-built automation templates</li>
+          <li>Setup documentation</li>
+          <li>Email support</li>
+          <li>Community access</li>
+        </ul>
+      </div>
+      <div class="product-card featured reveal reveal-delay-2">
+        <div class="product-tier">Tier 2</div>
+        <h3 class="product-name">Pro</h3>
+        <p class="product-desc">Full workflow systems with customization, integration support, and priority assistance.</p>
+        <ul class="product-features">
+          <li>Custom workflow configuration</li>
+          <li>API integration setup</li>
+          <li>Priority support</li>
+          <li>Quarterly reviews</li>
+          <li>Training sessions</li>
+        </ul>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-tier">Tier 3</div>
+        <h3 class="product-name">Custom</h3>
+        <p class="product-desc">Bespoke enterprise solutions with managed hosting, dedicated support, and continuous optimization.</p>
+        <ul class="product-features">
+          <li>Fully custom build</li>
+          <li>Managed hosting</li>
+          <li>Dedicated support</li>
+          <li>Ongoing optimization</li>
+          <li>SLA guarantees</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-label reveal">004 / Contact</div>
+    <p class="contact-line reveal reveal-delay-1">Have a project in mind? Let's talk.</p>
+    <a href="mailto:agleaton@pioneerem.com" class="contact-email reveal reveal-delay-2">agleaton@pioneerem.com</a>
+    <div class="footer-meta reveal reveal-delay-3">
+      &copy; 2026 Avery Gleaton. Built with precision.
+    </div>
+  </div>
+</section>
+
+<script>
+/* ============================================
+   MOBILE NAV
+   ============================================ */
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+// Close nav on link click
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
+/* ============================================
+   SCROLL REVEAL (Intersection Observer)
+   ============================================ */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ============================================
+   TYPING ANIMATION
+   ============================================ */
+const phrases = [
+  'I build systems that think.',
+  'Utility monitoring automation.',
+  'AI-powered infrastructure.',
+  'One command. Full workflow.'
+];
+let phraseIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typedEl = document.getElementById('typedText');
+
+function typeLoop() {
+  const current = phrases[phraseIndex];
+
+  if (!isDeleting) {
+    typedEl.textContent = current.substring(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === current.length) {
+      isDeleting = true;
+      setTimeout(typeLoop, 2200);
+      return;
+    }
+    setTimeout(typeLoop, 55);
+  } else {
+    typedEl.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      phraseIndex = (phraseIndex + 1) % phrases.length;
+      setTimeout(typeLoop, 400);
+      return;
+    }
+    setTimeout(typeLoop, 30);
+  }
+}
+setTimeout(typeLoop, 1200);
+
+/* ============================================
+   COUNT-UP ANIMATION
+   ============================================ */
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.counted) {
+      entry.target.dataset.counted = 'true';
+      const target = parseInt(entry.target.dataset.target);
+      const duration = 1200;
+      const startTime = performance.now();
+
+      function updateCount(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        entry.target.textContent = Math.floor(eased * target);
+        if (progress < 1) {
+          requestAnimationFrame(updateCount);
+        } else {
+          entry.target.textContent = target;
+        }
+      }
+      requestAnimationFrame(updateCount);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.count-up').forEach(el => countObserver.observe(el));
+</script>
+</body>
+</html>
