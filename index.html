@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Avery Gleaton | Automation Engineer</title>
-<meta name="description" content="Automation engineer building autonomous workflows, AI integrations, and operational infrastructure for teams that need systems to run themselves.">
+<meta name="description" content="Automation engineer building local-first AI workflows, command centers, knowledge systems, and operational infrastructure for teams that need systems to run themselves.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -375,6 +375,7 @@ section {
 .terminal-body .output { color: var(--green); }
 .terminal-body .comment { color: var(--text-tertiary); }
 .terminal-body .flag { color: var(--amber); }
+.terminal-spacer { margin-top: 8px; }
 
 /* ============================================
    CAPABILITIES
@@ -900,7 +901,7 @@ section {
   <div class="container hero-content">
     <div class="hero-prefix reveal">~/portfolio <span class="blink">$</span></div>
     <h1 class="hero-name reveal reveal-delay-1">Avery Gleaton</h1>
-    <p class="hero-title reveal reveal-delay-2">Automation Engineer / Systems Architect</p>
+    <p class="hero-title reveal reveal-delay-2">Automation Engineer / Agentic Systems Builder</p>
     <p class="hero-tagline reveal reveal-delay-3">
       <span class="typed-text" id="typedText"></span>
     </p>
@@ -913,15 +914,14 @@ section {
         <span class="terminal-title">avery@systems ~ /portfolio</span>
       </div>
       <div class="terminal-body">
-        <div><span class="prompt">$</span> <span class="cmd">claude /triage-inbox</span></div>
-        <div><span class="comment"># Scanning support queue (42 new tickets)...</span></div>
-        <div><span class="comment"># Enriching with customer context...</span></div>
-        <div><span class="comment"># Drafting tailored responses...</span></div>
-        <div><span class="output">&gt; 12 ready for review. 8 escalated. 22 auto-resolved.</span></div>
-        <div style="margin-top: 8px">
-          <span class="prompt">$</span> <span class="cmd">claude /health-report</span> <span class="flag">"Q1 Operations"</span>
+        <div><span class="prompt">$</span> <span class="cmd">hermes /build-command-center</span></div>
+        <div><span class="comment"># Routing West / East support workflows...</span></div>
+        <div><span class="comment"># Securing cc.pioneerem.com with Cloudflare Access...</span></div>
+        <div><span class="output">&gt; Sandbox ready. DigitalOcean handoff prepared.</span></div>
+        <div class="terminal-spacer">
+          <span class="prompt">$</span> <span class="cmd">workflow-assistant review-today</span>
         </div>
-        <div><span class="output">&gt; Report saved: 287 records scanned, 3 alerts flagged.</span></div>
+        <div><span class="output">&gt; Local drafts generated. Approval required before export.</span></div>
       </div>
     </div>
   </div>
@@ -931,27 +931,27 @@ section {
 <section id="capabilities">
   <div class="container">
     <div class="section-label reveal">001 / What I Build</div>
-    <h2 class="section-title reveal reveal-delay-1">Infrastructure that runs itself</h2>
+    <h2 class="section-title reveal reveal-delay-1">Practical AI systems for real operations</h2>
     <div class="cap-grid">
       <div class="cap-card reveal reveal-delay-1">
         <div class="cap-icon">&gt;_</div>
         <h3 class="cap-title">Automation Systems</h3>
-        <p class="cap-desc">End-to-end workflow automation that replaces hours of manual work with single-command execution. From support triage to data audits to report generation.</p>
+        <p class="cap-desc">Support workflows, command centers, and repeatable automations that reduce manual handoffs while keeping humans in control.</p>
       </div>
       <div class="cap-card reveal reveal-delay-2">
         <div class="cap-icon">AI</div>
         <h3 class="cap-title">AI Integration</h3>
-        <p class="cap-desc">Custom MCP servers, autonomous agents, and intelligent pipelines that connect AI to real business systems. Works with any help desk, CRM, database, or proprietary API.</p>
+        <p class="cap-desc">Claude Code, Codex, Hermes, MCP, and local agents wired into help desks, vaults, databases, and browser workflows.</p>
       </div>
       <div class="cap-card reveal reveal-delay-3">
         <div class="cap-icon">db</div>
         <h3 class="cap-title">Data Systems</h3>
-        <p class="cap-desc">Knowledge bases with full-text search, structured registries at scale, and data pipelines with automatic indexing. PostgreSQL, Supabase, or any backend.</p>
+        <p class="cap-desc">Supabase/PostgreSQL knowledge bases with full-text search, RLS, indexed articles, and context-aware answer drafting.</p>
       </div>
       <div class="cap-card reveal reveal-delay-4">
         <div class="cap-icon">{}</div>
         <h3 class="cap-title">Workflow Design</h3>
-        <p class="cap-desc">Modular workspace architectures that reduce operational overhead by 50-60%. Token-efficient, context-aware, and built to scale.</p>
+        <p class="cap-desc">Local-first capture, approval-before-export, privacy controls, and small dashboards that make automation safer to adopt.</p>
       </div>
     </div>
   </div>
@@ -964,179 +964,110 @@ section {
     <h2 class="section-title reveal reveal-delay-1">Systems in production</h2>
     <div class="projects-grid">
 
-      <!-- Project 1: Ticket Management -->
+      <!-- Project 1: Agentic OS Command Center -->
       <div class="project-card reveal reveal-delay-1">
         <div class="project-visual">
           <div class="visual-flow">
-            <div class="flow-node flow-input">Support Ticket</div>
+            <div class="flow-node flow-input">West / East</div>
             <span class="flow-arrow">&rarr;</span>
-            <div class="flow-node flow-process">Flask (15 files)</div>
+            <div class="flow-node flow-process">Cloudflare</div>
             <span class="flow-arrow">&rarr;</span>
-            <div class="flow-node flow-process">AI Analysis</div>
+            <div class="flow-node flow-process">VPS</div>
             <span class="flow-arrow">&rarr;</span>
-            <div class="flow-node flow-output">Response</div>
+            <div class="flow-node flow-output">CC</div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-header">
-            <h3 class="project-name">Autonomous Ticket Management</h3>
-            <span class="project-badge badge-live">Live</span>
+            <h3 class="project-name">Agentic OS Command Center</h3>
+            <span class="project-badge badge-planning">Pilot</span>
           </div>
-          <p class="project-desc">15-file Flask application deployed on Google Cloud Run. Autonomous support pipeline: reviews incoming tickets, analyzes customer context and historical patterns, then drafts tailored responses. Integrates with any help desk API.</p>
+          <p class="project-desc">A secure operations command center for support workflows. Recent work includes the DigitalOcean deployment plan, West/East routing design, JARVIS sandbox, and Cloudflare Access gate for cc.pioneerem.com.</p>
           <div class="project-stats">
-            <div class="stat">
-              <span class="stat-value count-up" data-target="15">0</span>
-              <span class="stat-label">File App</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">GCR</span>
-              <span class="stat-label">Deployed</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">Full</span>
-              <span class="stat-label">Autonomy</span>
-            </div>
+            <div class="stat"><span class="stat-value">DO</span><span class="stat-label">VPS Plan</span></div>
+            <div class="stat"><span class="stat-value">Access</span><span class="stat-label">Security Gate</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Project 2: Meterdata Cleanup -->
+      <!-- Project 2: Workflow Assistant -->
       <div class="project-card reveal reveal-delay-2">
-        <div class="project-visual">
-          <div class="visual-compare">
-            <div class="compare-block">
-              <div class="compare-number before count-up" data-target="160">0</div>
-              <div class="compare-label">Tool Calls Before</div>
-            </div>
-            <span class="compare-arrow">&rarr;</span>
-            <div class="compare-block">
-              <div class="compare-number after count-up" data-target="4">0</div>
-              <div class="compare-label">Tool Calls After</div>
-            </div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-header">
-            <h3 class="project-name">Meterdata Cleanup v2.0</h3>
-            <span class="project-badge badge-live">Live</span>
-          </div>
-          <p class="project-desc">Bulk data cleanup system with safety controls. Migrated from screenshot-based browser automation to DOM-based JavaScript execution. Protected records safelist prevents accidental deletions.</p>
-          <div class="project-stats">
-            <div class="stat">
-              <span class="stat-value" style="color: var(--green);">97%</span>
-              <span class="stat-label">Fewer Calls</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">85%</span>
-              <span class="stat-label">Token Savings</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 3: Three-Layer Architecture -->
-      <div class="project-card reveal reveal-delay-3">
         <div class="project-visual">
           <div class="visual-architecture">
-            <div class="arch-node">CLAUDE.md<br><span style="font-size:0.5rem;color:var(--text-tertiary)">Router</span></div>
+            <div class="arch-node">Record</div>
             <span class="arch-arrow">&rarr;</span>
-            <div class="arch-node">context.md<br><span style="font-size:0.5rem;color:var(--text-tertiary)">Workspace</span></div>
+            <div class="arch-node">Review</div>
             <span class="arch-arrow">&rarr;</span>
-            <div class="arch-node">Skills/MCPs<br><span style="font-size:0.5rem;color:var(--text-tertiary)">Execution</span></div>
+            <div class="arch-node">Approve</div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-header">
-            <h3 class="project-name">Three-Layer Workspace Architecture</h3>
-            <span class="project-badge badge-live">Live</span>
+            <h3 class="project-name">Workflow Discovery Assistant</h3>
+            <span class="project-badge badge-planning">Prototype</span>
           </div>
-          <p class="project-desc">Central router directs context loading through workspace files to plug-and-play skills and MCP servers. Compatible with Obsidian vault. Designed for complex, adaptive AI agent workflows.</p>
+          <p class="project-desc">Local-first workflow capture prototype for discovering repeated work, SOP candidates, and automation ideas. Built with explicit privacy controls, redaction utilities, review steps, and approval-before-export.</p>
           <div class="project-stats">
-            <div class="stat">
-              <span class="stat-value">50-60%</span>
-              <span class="stat-label">Token Savings</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value count-up" data-target="6">0</span>
-              <span class="stat-label">Workspaces</span>
-            </div>
+            <div class="stat"><span class="stat-value count-up" data-target="17">0</span><span class="stat-label">Tests Passing</span></div>
+            <div class="stat"><span class="stat-value">Local</span><span class="stat-label">First</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Project 4: Business Systems MCP -->
-      <div class="project-card reveal reveal-delay-1">
+      <!-- Project 3: KB-Aware Reply System -->
+      <div class="project-card reveal reveal-delay-3">
         <div class="project-visual">
           <div class="visual-flow">
-            <div class="flow-node flow-input">Ticket</div>
+            <div class="flow-node flow-input">Zoho</div>
             <span class="flow-arrow">&rarr;</span>
-            <div class="flow-node flow-process">Accounting System</div>
+            <div class="flow-node flow-process">Supabase KB</div>
             <span class="flow-arrow">&rarr;</span>
-            <div class="flow-node flow-process">Google Drive</div>
-            <span class="flow-arrow">&rarr;</span>
-            <div class="flow-node flow-output">Summary</div>
+            <div class="flow-node flow-output">Reply Draft</div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-header">
-            <h3 class="project-name">Business Systems MCP Integration</h3>
+            <h3 class="project-name">KB-Aware Reply System</h3>
             <span class="project-badge badge-live">Live</span>
           </div>
-          <p class="project-desc">Custom MCP server enabling Claude to triage tickets, draft replies, and perform autonomous research. Five-step process: pull ticket, search Books, fall back to Drive, cross-reference, output summary.</p>
+          <p class="project-desc">Knowledge-grounded support replies tied to Zoho Desk and Supabase. Uses searchable knowledge_base_articles, tsvector/GIN indexing, and article context to draft better answers.</p>
           <div class="project-stats">
-            <div class="stat">
-              <span class="stat-value count-up" data-target="5">0</span>
-              <span class="stat-label">Step Research</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">Auto</span>
-              <span class="stat-label">Triage</span>
-            </div>
+            <div class="stat"><span class="stat-value">FTS</span><span class="stat-label">Search</span></div>
+            <div class="stat"><span class="stat-value">GIN</span><span class="stat-label">Indexes</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Project 5: Ticket Streamlining -->
+      <!-- Project 4: Hermes + JARVIS Agent Workflow -->
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-visual">
+          <div class="visual-architecture">
+            <div class="arch-node">Hermes</div>
+            <span class="arch-arrow">&rarr;</span>
+            <div class="arch-node">JARVIS</div>
+            <span class="arch-arrow">&rarr;</span>
+            <div class="arch-node">Claude Code</div>
+          </div>
+        </div>
+        <div class="project-content">
+          <div class="project-header">
+            <h3 class="project-name">Remote Agent Build Workflow</h3>
+            <span class="project-badge badge-live">Live</span>
+          </div>
+          <p class="project-desc">Codex-light, Claude-heavy operating model: Hermes coordinates from Telegram, SSH connects into JARVIS over Tailscale, and Claude Code handles repo exploration, implementation, and debugging.</p>
+          <div class="project-stats">
+            <div class="stat"><span class="stat-value">SSH</span><span class="stat-label">Tailscale</span></div>
+            <div class="stat"><span class="stat-value">CC</span><span class="stat-label">Builder</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5: Supabase Knowledge Base -->
       <div class="project-card reveal reveal-delay-2">
         <div class="project-visual">
           <div class="visual-nodes">
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-header">
-            <h3 class="project-name">Ticket Streamlining System</h3>
-            <span class="project-badge badge-live">Live</span>
-          </div>
-          <p class="project-desc">Research template for consistent handling, common issue response library, and workflow tracker. Designed to reduce manual ticket handling time and enforce quality standards.</p>
-          <div class="project-stats">
-            <div class="stat">
-              <span class="stat-value">3</span>
-              <span class="stat-label">Components</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">24hr</span>
-              <span class="stat-label">Target SLA</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Project 6: Supabase KB -->
-      <div class="project-card reveal reveal-delay-3">
-        <div class="project-visual">
-          <div class="visual-nodes">
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-            <div class="data-node"></div>
-            <div class="data-node"></div>
+            <div class="data-node"></div><div class="data-node"></div><div class="data-node"></div>
+            <div class="data-node"></div><div class="data-node"></div><div class="data-node"></div>
           </div>
         </div>
         <div class="project-content">
@@ -1144,80 +1075,35 @@ section {
             <h3 class="project-name">Supabase Knowledge Base</h3>
             <span class="project-badge badge-live">Live</span>
           </div>
-          <p class="project-desc">PostgreSQL-backed knowledge base with full-text search, GIN indexes, Row Level Security policies, and auto-updating tsvector triggers. Built to ingest and search technical documentation at scale.</p>
+          <p class="project-desc">PostgreSQL-backed knowledge layer with full-text search, Row Level Security, auto-updating tsvectors, and structured article ingestion for AI-assisted support operations.</p>
           <div class="project-stats">
-            <div class="stat">
-              <span class="stat-value">FTS</span>
-              <span class="stat-label">Full-Text Search</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">RLS</span>
-              <span class="stat-label">Row Security</span>
-            </div>
+            <div class="stat"><span class="stat-value">RLS</span><span class="stat-label">Policies</span></div>
+            <div class="stat"><span class="stat-value">SQL</span><span class="stat-label">Backend</span></div>
           </div>
         </div>
       </div>
 
-      <!-- Project 7: Feedback Loop -->
-      <div class="project-card reveal reveal-delay-1">
+      <!-- Project 6: Meterdata Cleanup -->
+      <div class="project-card reveal reveal-delay-3">
         <div class="project-visual">
-          <div class="visual-architecture">
-            <div class="arch-node">Agent Draft</div>
-            <span class="arch-arrow">&rarr;</span>
-            <div class="arch-node">Human Edit</div>
-            <span class="arch-arrow">&rarr;</span>
-            <div class="arch-node">Training Data</div>
+          <div class="visual-compare">
+            <div class="compare-block"><div class="compare-number before count-up" data-target="160">0</div><div class="compare-label">Before</div></div>
+            <span class="compare-arrow">&rarr;</span>
+            <div class="compare-block"><div class="compare-number after count-up" data-target="4">0</div><div class="compare-label">After</div></div>
           </div>
         </div>
         <div class="project-content">
           <div class="project-header">
-            <h3 class="project-name">Feedback Loop Automation</h3>
-            <span class="project-badge badge-planning">Planning</span>
+            <h3 class="project-name">Meterdata Cleanup v2.0</h3>
+            <span class="project-badge badge-live">Live</span>
           </div>
-          <p class="project-desc">Bookmarklet captures AI-drafted responses vs. human-modified versions in any web interface. Auto-logs both with reasoning notes, creating a living training dataset for continuous improvement.</p>
+          <p class="project-desc">Bulk cleanup tooling upgraded from screenshot-driven browser work to safer DOM-based JavaScript execution, reducing tool calls while protecting records with a safelist.</p>
           <div class="project-stats">
-            <div class="stat">
-              <span class="stat-value">Live</span>
-              <span class="stat-label">Training Data</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">Auto</span>
-              <span class="stat-label">Capture</span>
-            </div>
+            <div class="stat"><span class="stat-value">97%</span><span class="stat-label">Fewer Calls</span></div>
+            <div class="stat"><span class="stat-value">Safe</span><span class="stat-label">Safelist</span></div>
           </div>
         </div>
       </div>
-
-      <!-- Project 8: Community & Learning Platform -->
-      <div class="project-card reveal reveal-delay-2">
-        <div class="project-visual">
-          <div class="visual-architecture">
-            <div class="arch-node" style="border-color: var(--amber-dim); color: var(--amber);">Courses</div>
-            <span class="arch-arrow">&rarr;</span>
-            <div class="arch-node" style="border-color: var(--cyan-dim); color: var(--cyan);">Templates</div>
-            <span class="arch-arrow">&rarr;</span>
-            <div class="arch-node" style="border-color: rgba(0,255,136,0.2); color: var(--green);">Community</div>
-          </div>
-        </div>
-        <div class="project-content">
-          <div class="project-header">
-            <h3 class="project-name">Community &amp; Learning Platform</h3>
-            <span class="project-badge badge-planning">Planning</span>
-          </div>
-          <p class="project-desc">Skool-hosted community with courses, templates, and resources for teams building their own automation systems. Live training, DIY templates, and peer support for the self-service audience.</p>
-          <div class="project-stats">
-            <div class="stat">
-              <span class="stat-value">Skool</span>
-              <span class="stat-label">Platform</span>
-            </div>
-            <div class="stat">
-              <span class="stat-value">DIY</span>
-              <span class="stat-label">Access Model</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
@@ -1311,10 +1197,10 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
    TYPING ANIMATION
    ============================================ */
 const phrases = [
-  'I build systems that think.',
-  'Autonomous workflows, one command.',
-  'AI that integrates with anything.',
-  'Operations that run themselves.'
+  'Command centers for messy operations.',
+  'Local-first AI workflows with approval gates.',
+  'Knowledge-aware replies, not generic automation.',
+  'Agentic systems that stay practical.'
 ];
 let phraseIndex = 0;
 let charIndex = 0;
